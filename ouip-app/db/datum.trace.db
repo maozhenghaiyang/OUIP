@@ -1,0 +1,99 @@
+2018-04-23 12:28:40 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    CREATE TABLE MENU (
+       ID BIGINT NOT NULL,
+        NAME VARCHAR(255),
+        ORDER[*] INTEGER NOT NULL,
+        FUNCTION_ID BIGINT,
+        PARENT_ID BIGINT,
+        PRIMARY KEY (ID)
+    ) "; expected "identifier"; SQL statement:
+
+    create table menu (
+       id bigint not null,
+        name varchar(255),
+        order integer not null,
+        function_id bigint,
+        parent_id bigint,
+        primary key (id)
+    ) [42001-196]
+2018-04-23 12:28:40 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "MENU" not found; SQL statement:
+
+    alter table menu 
+       add constraint FKa51vr21lnpllim9g9fmigmvy8 
+       foreign key (function_id) 
+       references function [42102-196]
+2018-04-23 12:28:40 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "MENU" not found; SQL statement:
+
+    alter table menu 
+       add constraint FKgeupubdqncc1lpgf2cn4fqwbc 
+       foreign key (parent_id) 
+       references menu [42102-196]
+2018-04-23 12:35:41 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    CREATE TABLE MENU (
+       ID BIGINT NOT NULL,
+        NAME VARCHAR(255),
+        ORDER[*] INTEGER NOT NULL,
+        FUNCTION_ID BIGINT,
+        PARENT_ID BIGINT,
+        PRIMARY KEY (ID)
+    ) "; expected "identifier"; SQL statement:
+
+    create table menu (
+       id bigint not null,
+        name varchar(255),
+        order integer not null,
+        function_id bigint,
+        parent_id bigint,
+        primary key (id)
+    ) [42001-196]
+2018-04-23 12:35:41 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "MENU" not found; SQL statement:
+
+    alter table menu 
+       add constraint FKa51vr21lnpllim9g9fmigmvy8 
+       foreign key (function_id) 
+       references function [42102-196]
+2018-04-23 12:35:41 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "MENU" not found; SQL statement:
+
+    alter table menu 
+       add constraint FKgeupubdqncc1lpgf2cn4fqwbc 
+       foreign key (parent_id) 
+       references menu [42102-196]
+2018-04-23 12:38:07 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    CREATE TABLE MENU (
+       ID BIGINT NOT NULL,
+        NAME VARCHAR(255),
+        ORDER[*] INTEGER NOT NULL,
+        FUNCTION_ID BIGINT,
+        PARENT_ID BIGINT,
+        PRIMARY KEY (ID)
+    ) "; expected "identifier"; SQL statement:
+
+    create table menu (
+       id bigint not null,
+        name varchar(255),
+        order integer not null,
+        function_id bigint,
+        parent_id bigint,
+        primary key (id)
+    ) [42001-196]
+2018-04-23 12:38:07 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "MENU" not found; SQL statement:
+
+    alter table menu 
+       add constraint FKa51vr21lnpllim9g9fmigmvy8 
+       foreign key (function_id) 
+       references function [42102-196]
+2018-04-23 12:38:07 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Table "MENU" not found; SQL statement:
+
+    alter table menu 
+       add constraint FKgeupubdqncc1lpgf2cn4fqwbc 
+       foreign key (parent_id) 
+       references menu [42102-196]
