@@ -1,7 +1,7 @@
 const path = require('path');
 
 export default {
-  entry: 'src/framework/index.js',
+  entry: 'src/index.js',
   extraBabelPlugins: [
     'transform-decorators-legacy',
     ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],

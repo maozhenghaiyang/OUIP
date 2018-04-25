@@ -1,7 +1,7 @@
 {
-  "name": "datum-ui",
+  "name": "ouip-ui",
   "version": "1.0.0",
-  "description": "A Modern Business Intelligence and Analysis Platform.",
+  "description": "企业级统一UI入口.",
   "private": true,
   "scripts": {
     "precommit": "npm run lint-staged",

@@ -1,0 +1,46 @@
+@import '~antd/lib/style/themes/default.less';
+
+.header {
+  height: 32px;
+  padding: 0 12px 0 0;
+  position: relative;
+  .time {
+    font-size: 16px;
+    padding: 0 3px;
+    color: #ffffff;
+  }
+}
+
+:global {
+  .ant-layout {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .ant-layout-header {
+    line-height: 32px;
+    height: 32px;
+  }
+  .ant-badge {
+    line-height: 32px;
+    font-size: 20px;
+    vertical-align: baseline;
+  }
+  .ant-badge-count {
+    top:1px;
+    height: 16px;
+    line-height: 16px;
+  }
+  .anticon {
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 32px;
+    cursor: pointer;
+    transition: all 0.3s, padding 0s;
+    padding: 0 6px;
+  }
+}
+
+.right {
+  float: right;
+  height: 100%;
+}
