@@ -2,20 +2,12 @@
 
 .header {
   height: 32px;
-  padding: 0 12px 0 0;
+  padding: 0;
+  z-index: 9;
   position: relative;
-  .time {
-    font-size: 16px;
-    padding: 0 3px;
-    color: #ffffff;
-  }
 }
 
 :global {
-  .ant-layout {
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
   .ant-layout-header {
     line-height: 32px;
     height: 32px;
@@ -36,10 +28,9 @@
     line-height: 32px;
     cursor: pointer;
     transition: all 0.3s, padding 0s;
-    padding: 0 6px;
+    padding: 0 12px;
   }
 }
-
 .right {
   float: right;
   height: 100%;

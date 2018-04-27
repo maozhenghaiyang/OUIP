@@ -25,6 +25,10 @@ export default class MainMenu extends PureComponent {
               </svg>
             </div>
           </div>
+          <div className={styles.menuList} />
+          <div className={styles.menuList} />
+          <div className={styles.menuList} />
+          <div className={styles.menuList} />
         </div>
       </div>
     );

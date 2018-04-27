@@ -1,41 +1,79 @@
-
 export default {
-  namespace: 'global',
-
-  state: {
+  namespace : 'global',
+  state : {
     // 全局 UI 状态
     ui: {
       mainMenu: false,
       sideMenu: false,
-      taskBar: false,
+    },
+    session: {
+      user: {},
+      menuTree: {
+        menus: [
+          {
+            id: 1,
+            name: '菜单1',
+            sequence: 1,
+            childrens: [
+              {
+                id: 2,
+                name: '子菜单1',
+                sequence: 1,
+                function: {
+                  id: 1,
+                  code: 'OUIP0001',
+                  name: '子菜单1功能码',
+                  action: 'http://www.baidu.com',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    menu: {
+      mainMenus: [],
     },
     notices: [],
   },
 
-  effects: {
-   
-  },
+  effects : {},
 
-  reducers: {
-    trigger (state , action) {
-     const ui = {...state.ui}      
-     ui[action.trigger] = !state.ui[action.trigger]
-      return  {
+  reducers : {
+    triggerMainMenu(state) {
+      const ui = {
+        ...state.ui,
+        mainMenu: !state.ui.mainMenu,
+        sideMenu: false,
+      }
+      return {
         ...state,
         ui: {
           ...ui,
         },
       };
-  },
-   reset(state) {
-     return {
-       ...state,
-       ui: {
-        sideMenu: false,
-        taskBar: false,
+    },
+    triggerSideMenu(state) {
+      const ui = {
+        ...state.ui,
+        sideMenu: !state.ui.sideMenu,
         mainMenu: false,
-       },
-     }
-   },
-},
+      }
+      return {
+        ...state,
+        ui: {
+          ...ui,
+        },
+      };
+    },
+    hidden(state) {
+      return {
+        ...state,
+        ui: {
+          sideMenu: false,
+          mainMenu: false,
+        },
+      }
+    },
+  },
 };

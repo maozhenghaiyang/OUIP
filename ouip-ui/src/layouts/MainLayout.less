@@ -1,0 +1,27 @@
+@import '~antd/lib/style/themes/default.less';
+
+:global {
+  .ant-tabs-bottom > .ant-tabs-bar {
+    background-color: wheat;
+    margin-top: 0;
+  }
+  .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab .anticon-close {
+    height: 32px;
+    color: #f5222d;
+    font-size: 12px;
+  }
+}
+.closeTab {
+  position: absolute;
+  width: 47px;
+  height: 44px;
+  border:0;
+  padding:0;
+  right: 0;
+  z-index: 8;
+  background: url("../assets/module_close.png");
+  opacity: 0.5;
+  &:hover{
+    opacity: 1;
+  }
+}
