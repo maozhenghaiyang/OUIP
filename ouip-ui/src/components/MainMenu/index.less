@@ -52,6 +52,9 @@
                     background: #B4B2B5;
                  }
              }
+             .item.selected {
+                background: #B4B2B5;
+             }
              
              .leafItem {
                 height: 35px;
@@ -71,8 +74,12 @@
                 svg{
                     margin-right: 10px;
                 }
+                &:hover {
+                    background: #31AEFF;
+                    color: #FFFFFF;
+                }
             }
-            .leafItem:hover{
+            .leafItem.selected {
                 background: #31AEFF;
                 color: #FFFFFF;
             }

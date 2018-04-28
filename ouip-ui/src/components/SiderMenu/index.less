@@ -1,9 +1,11 @@
 @import '~antd/lib/style/themes/default.less';
-@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+
+// hide scroll bar
+::-webkit-scrollbar {
+  display:none
+}
+
 .sider {
-  position: absolute;
-  top:'32px';
-  min-height:'calc(100vh - 64px)';
   z-index: 10;
 }
 

@@ -1,3 +1,8 @@
+
+const defaultMenus = [[],[],[],[]];
+
+const defaultSelectMenus = [];
+
 export default {
   namespace : 'global',
   state : {
@@ -22,9 +27,27 @@ export default {
                 function: {
                   id: 1,
                   code: 'OUIP0001',
-                  name: '子菜单1功能码',
+                  name: '子菜单1功能码很长很长',
                   action: 'https://cn.bing.com/',
                 },
+              },
+              {
+                id: 21,
+                name: '子菜单21',
+                sequence: 2,
+                childrens: [
+                  {
+                    id: 211,
+                    name: '子菜单211',
+                    sequence: 1,
+                    function: {
+                      id: 211,
+                      code: 'OUIP0211',
+                      name: '子菜单211功能码很长很长',
+                      action: 'https://cn.bing.com/',
+                    },
+                  },
+                ],
               },
             ],
           }, {
@@ -51,7 +74,7 @@ export default {
             function: {
               id: 2,
               code: 'OUIP0002',
-              name: '子菜单2功能码',
+              name: '子菜单2功能码非常非常的长',
               action: 'http://localhost:8000/index1.html',
             },
           }, {
@@ -68,7 +91,8 @@ export default {
         ],
       },
     },
-    menus: [],
+    menus: defaultMenus,
+    selectMenus: [],
     activeFunction: '9999',
     functions: [
       {
@@ -82,7 +106,7 @@ export default {
     faqMenus: [
       {
         id: 5,
-        name: '常用菜单1',
+        name: '这是一个非常非常长非常长的菜单啊非常的长',
         sequence: 5,
         function: {
           id: 3,
@@ -120,6 +144,8 @@ export default {
         ui: {
           ...ui,
         },
+        menus: defaultMenus,
+        selectMenus: defaultSelectMenus,
       };
     },
     triggerSideMenu(state) {
@@ -133,6 +159,8 @@ export default {
         ui: {
           ...ui,
         },
+        menus: defaultMenus,
+        selectMenus: defaultSelectMenus,
       };
     },
     hidden(state) {
@@ -142,6 +170,8 @@ export default {
           sideMenu: false,
           mainMenu: false,
         },
+        menus: defaultMenus,
+        selectMenus: defaultSelectMenus,
       }
     },
     openFunction(state, action) {
@@ -153,6 +183,8 @@ export default {
           ui: {
             mainMenu: false,
           },
+          menus: defaultMenus,
+          selectMenus: defaultSelectMenus,
         }
       } else {
         functions.push({...action.function,closable: true});
@@ -161,6 +193,8 @@ export default {
           ui: {
             mainMenu: false,
           },
+          menus: defaultMenus,
+          selectMenus: defaultSelectMenus,
           functions,
           activeFunction: `${action.function.id}`,
         }
@@ -169,24 +203,28 @@ export default {
     },
     closeFunction(state, action) {
       let lastIndex;
-      let activeFunction;
+      let {activeFunction} = state;
       state.functions.forEach((f, i) => {
         if (action.id === `${f.id}`) {
           lastIndex = i - 1;
         }
       });
-      const functions = state.functions.filter((f) => `${f.id}` !== action.id);
-      if (lastIndex >= 0 && `${state.activeFunction}` === action.id) {
-        activeFunction = `${functions[lastIndex].id}`;
+      const functions = state.functions.filter((f) => `${f.id}`  !== action.id);
+      if(`${state.activeFunction}` === action.id) {
+         if(lastIndex >= 0) {
+          activeFunction = `${functions[lastIndex].id}`;
+         } else {
+          activeFunction = `${functions[0].id}`;
+         }
       }
-      if(lastIndex <0 && functions.length>0) {
-        activeFunction = `${functions[0].id}`;
-      }
+      
       return {
         ...state,
         ui: {
           mainMenu: false,
         },
+        menus: defaultMenus,
+        selectMenus: defaultSelectMenus,
         functions,
         activeFunction,
       }
@@ -195,6 +233,24 @@ export default {
       return {
         ...state,
         activeFunction: action.id,
+      }
+    },
+    selectMenu(state, action) {
+      const {select,level} = action
+      
+      const newMenus = state.menus.map((menus,index)=> {
+        if(index < level) {
+          return menus;
+        } else {
+          return index === level ? select.childrens: []
+        }
+      } );
+      const newSelectMenus = state.selectMenus.filter((m,index)=>index<level)
+      newSelectMenus.push(select.id);
+      return {
+        ...state,
+        menus: newMenus,
+        selectMenus: newSelectMenus,
       }
     },
   },

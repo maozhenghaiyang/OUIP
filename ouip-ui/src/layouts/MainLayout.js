@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Tabs, Icon} from 'antd';
 import { connect } from 'dva';
 import GlobalHeader from '../components/GlobalHeader';
+import Ellipsis from '../components/Ellipsis';
 // import GlobalFooter from '../components/GlobalFooter';
 import SiderMenu from '../components/SiderMenu';
 import styles from './MainLayout.less';
@@ -76,7 +77,7 @@ export default class MainLayout extends React.PureComponent {
             onEdit={this.onEdit}
           >
             {functions.map((f, index) => (
-              <TabPane tab={<span>{f.name}{index!==0?<Icon type="close" onClick={()=>this.remove(`${f.id}`)}  />:null}</span>} key={`${f.id}`} closable={f.closable}>
+              <TabPane tab={<span><Ellipsis length={10} tooltip>{f.name}</Ellipsis>{index!==0?<Icon type="close" onClick={(e)=>{e.stopPropagation();this.remove(`${f.id}`);}}  />:null}</span>} key={`${f.id}`} closable={f.closable}>
                 <iframe title={f.name}  style={panelStyles} src={f.action} />
               </TabPane>
 ))}
@@ -111,3 +112,4 @@ export default class MainLayout extends React.PureComponent {
     );
   }
 }
+
