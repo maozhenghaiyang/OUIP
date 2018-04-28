@@ -1,16 +1,46 @@
 @import '~antd/lib/style/themes/default.less';
 
 :global {
-  .ant-tabs-bottom > .ant-tabs-bar {
-    background-color: wheat;
-    margin-top: 0;
+  .ant-tabs {
+    color: rgba(255, 255, 255, 0.65);
   }
-  .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab .anticon-close {
-    height: 32px;
-    color: #f5222d;
-    font-size: 12px;
+  .ant-tabs-bottom > .ant-tabs-bar {
+    background-color: #001529;
+    margin-top: 0px;
+  }
+  .ant-tabs-nav .ant-tabs-tab {
+    margin: 0 16px 0 5px;
+  }
+  .ant-tabs-nav .ant-tabs-tab-active {
+    color:white;
+  }
+  
+  .ant-tabs-ink-bar {
+    background-color: rgb(24, 144, 255);
+  }
+
+  .ant-tabs-nav .ant-tabs-tab:hover {
+    color: white;
+  } 
+
+  .ant-tabs-tab .anticon {
+    margin-left: 10px;
+    margin-right: 0;
+    line-height: 20px;
+    width: 10px;
+    padding-left: 20px;
+    font-size: 8px;
+  }
+
+  .ant-tabs-nav .ant-tabs-tab-active .anticon {
+    color:white;
+  }
+
+  .ant-tabs-nav .ant-tabs-tab .anticon:hover {
+    color: white;
   }
 }
+
 .closeTab {
   position: absolute;
   width: 47px;

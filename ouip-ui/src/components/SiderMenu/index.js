@@ -1,31 +1,41 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'dva';
 import { Layout, Menu} from 'antd';
 import styles from './index.less';
 
 const { Sider } = Layout;
 
-export default class SiderMenu extends PureComponent {
+
+const siderStyles = {position: 'absolute',top:'32px',minHeight:'calc(100vh - 64px)'}
+
+const menuStyles = { padding: '16px 0', width: '100%' }
+class SiderMenu extends PureComponent {
   
+  openFunction =(func) => {
+    this.props.dispatch({
+      type: 'global/openFunction',
+      function: func,
+    });
+  }
+
   render() {
-  
+  const {menus,activeFunction} = this.props;
     return (
-      <Sider
-        style={{position: 'absolute',top:'32px',minHeight:'calc(100vh - 64px)'}}
-        className={styles.sider}
-      >
+      <Sider style={siderStyles} className={styles.sider} >
         <Menu
-          key="Menu"
           theme="dark"
           mode="inline"
-          onOpenChange={this.handleOpenChange}
-          style={{ padding: '16px 0', width: '100%' }}
+          style={menuStyles}
+          defaultSelectedKeys={[`${activeFunction}`]}
+          onClick={({key})=>{
+          this.openFunction(menus.filter(m=> (`${m.function.id}`===key))[0].function)
+        }}
         >
-          <Menu.Item key="1">常用菜单1</Menu.Item>
-          <Menu.Item key="2">常用菜单2</Menu.Item>
-          <Menu.Item key="3">常用菜单3</Menu.Item>
-          <Menu.Item key="4">常用菜单4</Menu.Item>
+          { menus.map((m)=>(<Menu.Item key={m.function.id}>{m.name}</Menu.Item>)) }
         </Menu>
       </Sider>
     );
   }
-}
+};
+
+export default connect(({ global }) => ({ menus: global.faqMenus, activeFunction: global.activeFunction}))(SiderMenu);
